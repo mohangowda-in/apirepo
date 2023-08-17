@@ -1,6 +1,9 @@
 package org.restapi.restapitesting;
 
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.openqa.selenium.*;
 
@@ -16,7 +19,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SelTest {
 	WebDriver driver;
-	@Test
+	//@Test
 	public void getActions() {
 		
 		driver = new ChromeDriver();
@@ -76,7 +79,7 @@ public class SelTest {
 	  }
   }
   
-  //@Test
+  @Test
   public void getIncognito() {
 	  ChromeOptions options = new ChromeOptions();
 	  //options.addArguments("--remote-allow-origins=*");
@@ -85,8 +88,10 @@ public class SelTest {
 	  capabelity.setCapability(ChromeOptions.CAPABILITY, options);
 	  options.merge(capabelity);
 	  
-	  WebDriver driver = new ChromeDriver();
+	  WebDriver driver = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
 	  driver.get("https://www.ndtv.com");
+	  driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+	  driver.quit();
   }
 }
