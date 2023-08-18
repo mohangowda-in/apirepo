@@ -19,6 +19,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SelTest {
 	WebDriver driver;
+	String title="";
 	//@Test
 	public void getActions() {
 		
@@ -79,7 +80,7 @@ public class SelTest {
 	  }
   }
   
-  @Test
+  @Test(priority = 1)
   public void getIncognito() {
 	  ChromeOptions options = new ChromeOptions();
 	  //options.addArguments("--remote-allow-origins=*");
@@ -88,10 +89,24 @@ public class SelTest {
 	  capabelity.setCapability(ChromeOptions.CAPABILITY, options);
 	  options.merge(capabelity);
 	  
-	  WebDriver driver = new ChromeDriver(options);
+	  driver = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
 	  driver.get("https://www.ndtv.com");
-	  driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+	  
+	  //driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+	  //driver.quit();
+  }
+  
+  @Test(priority = 2)
+  public void getPageTitle() {
+	  title = driver.getTitle();
+	  System.out.println("Page title====="+title);
+	  
+  }
+  
+  @Test(priority = 3)
+  public void verifyTitle() {
+	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
 	  driver.quit();
   }
 }
