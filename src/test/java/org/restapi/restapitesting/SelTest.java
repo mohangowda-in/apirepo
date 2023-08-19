@@ -113,6 +113,7 @@ public class SelTest {
   
   @Test(priority = 3)
   public void verifyTitle() {
+	  System.out.println("Verifying the portal title....");
 	  log.info("verifying the page title");
 	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
 	  driver.quit();
