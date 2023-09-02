@@ -96,7 +96,7 @@ public class SelTest {
 	  
 	  driver = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
-	  log.info("Chromedriver initialized");
+	  //log.info("Chromedriver initialized");
 	  driver.get("https://www.ndtv.com");
 	  //log.info("Browser opened and accessed the url");
 	  //driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
