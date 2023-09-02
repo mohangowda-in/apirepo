@@ -92,13 +92,13 @@ public class SelTest {
 	  DesiredCapabilities capabelity = new DesiredCapabilities();
 	  capabelity.setCapability(ChromeOptions.CAPABILITY, options);
 	  options.merge(capabelity);
-	  log  = LogManager.getLogger(SelTest.class);
+	  //log  = LogManager.getLogger(SelTest.class);
 	  
 	  driver = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
 	  log.info("Chromedriver initialized");
 	  driver.get("https://www.ndtv.com");
-	  log.info("Browser opened and accessed the url");
+	  //log.info("Browser opened and accessed the url");
 	  //driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 	  //driver.quit();
   }
@@ -106,7 +106,7 @@ public class SelTest {
   @Test(priority = 2)
   public void getPageTitle() {
 	  title = driver.getTitle();
-	  log.info("Feching the page title");
+	  //log.info("Feching the page title");
 	  System.out.println("Page title====="+title);
 	  
   }
@@ -114,7 +114,7 @@ public class SelTest {
   @Test(priority = 3)
   public void verifyTitle() {
 	  System.out.println("Verifying the portal title....");
-	  log.info("verifying the page title");
+	  //log.info("verifying the page title");
 	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
 	  driver.quit();
   }
