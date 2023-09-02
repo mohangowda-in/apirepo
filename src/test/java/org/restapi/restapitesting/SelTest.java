@@ -83,7 +83,7 @@ public class SelTest {
 		  System.out.println(e);
 	  }
   }
-  
+  WebDriver driver1;
   @Test(priority = 1)
   public void getIncognito() {
 	  ChromeOptions options = new ChromeOptions();
@@ -94,10 +94,10 @@ public class SelTest {
 	  options.merge(capabelity);
 	  //log  = LogManager.getLogger(SelTest.class);
 	  
-	  driver = new ChromeDriver(options);
+	 driver1 = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
 	  //log.info("Chromedriver initialized");
-	  driver.get("https://www.ndtv.com");
+	  driver1.get("https://www.ndtv.com");
 	  //log.info("Browser opened and accessed the url");
 	  //driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 	  //driver.quit();
@@ -105,7 +105,7 @@ public class SelTest {
   
   @Test(priority = 2)
   public void getPageTitle() {
-	  title = driver.getTitle();
+	  title = driver1.getTitle();
 	  //log.info("Feching the page title");
 	  System.out.println("Page title====="+title);
 	  
@@ -116,6 +116,6 @@ public class SelTest {
 	  System.out.println("Verifying the portal title....");
 	  //log.info("verifying the page title");
 	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
-	  driver.quit();
+	  driver1.quit();
   }
 }
