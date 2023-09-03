@@ -2,6 +2,8 @@ package org.restapi.restapitesting;
 
 import org.testng.annotations.Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -90,10 +92,10 @@ public class SelTest {
 	  //options.addArguments("--remote-allow-origins=*");
 	  options.addArguments("--incognito");
 	  DesiredCapabilities capabelity = new DesiredCapabilities();
-	  capabelity.setCapability(ChromeOptions.CAPABILITY, options);
+	 capabelity.setCapability(ChromeOptions.CAPABILITY, options);
 	  options.merge(capabelity);
 	  //log  = LogManager.getLogger(SelTest.class);
-	  
+	  WebDriverManager.chromedriver().setup(); 
 	 driver1 = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
 	  //log.info("Chromedriver initialized");
