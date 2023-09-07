@@ -1,0 +1,13 @@
+trigger:
+- master
+
+pool:
+ vmImage: windows-2022
+
+stages:
+  - stage: A
+
+    jobs:
+      - job: AJob
+        steps:
+          - script: echo "hello yaml..."
