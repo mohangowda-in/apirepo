@@ -2,12 +2,16 @@ trigger:
 - master
 
 pool:
- vmImage: windows-2022
+  vmImage: 'windows-2022'
 
-stages:
-  - stage: A
-
-    jobs:
-      - job: AJob
-        steps:
-          - script: echo "hello yaml..."
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
