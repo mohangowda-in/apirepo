@@ -15,3 +15,6 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean install'
+- task: PublishBuildArtifacts@1
+  inputs:
+    ArtifactName: test report  
