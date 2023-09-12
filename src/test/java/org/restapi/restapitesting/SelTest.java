@@ -85,7 +85,6 @@ public class SelTest {
 		  System.out.println(e);
 	  }
   }
-  WebDriver driver1;
   @Test(priority = 1)
   public void getIncognito() {
 	  ChromeOptions options = new ChromeOptions();
@@ -94,21 +93,24 @@ public class SelTest {
 	  DesiredCapabilities capabelity = new DesiredCapabilities();
 	 capabelity.setCapability(ChromeOptions.CAPABILITY, options);
 	  options.merge(capabelity);
-	  //log  = LogManager.getLogger(SelTest.class);
-	  WebDriverManager.chromedriver().setup(); 
-	 driver1 = new ChromeDriver(options);
+	  log  = LogManager.getLogger(SelTest.class);
+	  WebDriverManager.chromedriver().setup();
+	 driver = new ChromeDriver(options);
 	  //String parentwindow = driver.getWindowHandle();
-	  //log.info("Chromedriver initialized");
-	  driver1.get("https://www.ndtv.com");
-	  //log.info("Browser opened and accessed the url");
+	  log.info("Chromedriver initialized");
+	  driver.get("https://www.ndtv.com");
+	  if(!driver.findElements(By.id("testme")).isEmpty()) {
+		  System.out.println("Element present");
+	  }
+	  log.info("Browser opened and accessed the url");
 	  //driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 	  //driver.quit();
   }
   
   @Test(priority = 2)
   public void getPageTitle() {
-	  title = driver1.getTitle();
-	  //log.info("Feching the page title");
+	  title = driver.getTitle();
+	  log.info("Feching the page title");
 	  System.out.println("Page title====="+title);
 	  
   }
@@ -116,8 +118,8 @@ public class SelTest {
   @Test(priority = 3)
   public void verifyTitle() {
 	  System.out.println("Verifying the portal title....");
-	  //log.info("verifying the page title");
+	  log.info("verifying the page title");
 	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
-	  driver1.quit();
+	  driver.quit();
   }
 }
