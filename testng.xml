@@ -3,7 +3,7 @@
 <suite name="Suite">
 <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
-        <listener class-name="org.restapi.restapitesting.RetryAnnotation"/>
+        <!--listener class-name="org.restapi.restapitesting.RetryAnnotation"/-->
     </listeners>
   <test name="roleATest">
   <!-- parameter name="roleName" value="roleA"/-->
