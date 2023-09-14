@@ -154,7 +154,7 @@ public class SelTest {
   public void verifyTitle() {
 	  try {
 	  extest = extrep.createTest("verify the title");
-	  extest.info("verify the title");
+	  extest.info("verify the title##############");
 	  System.out.println("Verifying the portal title....");
 	  log.info("verifying the page title");
 	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
