@@ -157,7 +157,7 @@ public class SelTest {
 	  extest.info("verify the title");
 	  System.out.println("Verifying the portal title....");
 	  log.info("verifying the page title");
-	  Assert.assertTrue(false);//.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
+	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
 	  driver.quit();
 	  }catch(AssertionError e) {
 		  extest.fail(e);
