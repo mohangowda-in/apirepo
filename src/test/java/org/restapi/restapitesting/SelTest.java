@@ -1,9 +1,18 @@
 package org.restapi.restapitesting;
 
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,6 +34,27 @@ public class SelTest {
 	WebDriver driver;
 	String title="";
 	Logger log;
+	ExtentReports extrep;
+	ExtentTest extest;
+	
+	
+	@BeforeSuite
+	public void setup() {
+		extrep = new ExtentReports();
+		ExtentSparkReporter sparkrep = new ExtentSparkReporter(System.getProperty("user.dir")+"/report/testreport.html");
+		extrep.attachReporter(sparkrep);
+	}
+	
+	@AfterMethod
+	public void teardown(ITestResult result) {
+		if (result.getStatus() == ITestResult.FAILURE) {
+            extest.fail(MarkupHelper.createLabel(result.getName() + "Test Failed", ExtentColor.RED));
+            extest.fail(result.getThrowable());
+            String screencastPath = null;
+            
+		extrep.flush();
+		}
+	}
 	
 	//@Test
 	public void getActions() {
@@ -87,6 +117,9 @@ public class SelTest {
   }
   @Test(priority = 1)
   public void getIncognito() {
+	  
+	  extest = extrep.createTest("get incognito browser window");
+	  extest.info("Starting application");
 	  ChromeOptions options = new ChromeOptions();
 	  //options.addArguments("--remote-allow-origins=*");
 	  options.addArguments("--incognito");
@@ -109,6 +142,8 @@ public class SelTest {
   
   @Test(priority = 2)
   public void getPageTitle() {
+	  extest = extrep.createTest("get page title");
+	  extest.info("Page title");
 	  title = driver.getTitle();
 	  log.info("Feching the page title");
 	  System.out.println("Page title====="+title);
@@ -117,9 +152,16 @@ public class SelTest {
   
   @Test(priority = 3)
   public void verifyTitle() {
+	  try {
+	  extest = extrep.createTest("verify the title");
+	  extest.info("verify the title");
 	  System.out.println("Verifying the portal title....");
 	  log.info("verifying the page title");
-	  Assert.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
+	  Assert.assertTrue(false);//.assertEquals(title,"Get Latest News, India News, Breaking News, Today's News - NDTV.com");
 	  driver.quit();
+	  }catch(AssertionError e) {
+		  extest.fail(e);
+		  driver.quit();
+	  }
   }
 }
