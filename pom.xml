@@ -173,6 +173,7 @@
   	<configuration>
   		<suiteXmlFiles>
   			<suiteXmlFile>testng.xml</suiteXmlFile>
+  			<suiteXmlFile>suites-test-testng.xml</suiteXmlFile>
   		</suiteXmlFiles>
   		<skipTests>false</skipTests>
   	</configuration>
