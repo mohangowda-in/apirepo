@@ -19,6 +19,6 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: '$(Parameters.path)'
-    artifact: testreport
-  condition: always()
+    targetPath: 'report'
+    artifact: 'testreport'
+    publishLocation: 'pipeline'
